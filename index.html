@@ -397,6 +397,21 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'Athens Black Business Directory<br /><table><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Automotive0.png" /></td><td>Automotive</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_BarberBeauty1.png" /></td><td>Barber & Beauty</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_BarsNightLife2.png" /></td><td>Bars & Night Life</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Education3.png" /></td><td>Education</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_FinancialServices4.png" /></td><td>Financial Services</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Fitness5.png" /></td><td>Fitness</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_FuneralHomes6.png" /></td><td>Funeral Homes</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Healthcare7.png" /></td><td>Healthcare</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Homerepairandmaintenance8.png" /></td><td>Home repair and maintenance</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Law9.png" /></td><td>Law</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_LawnMaintenance10.png" /></td><td>Lawn Maintenance</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Media11.png" /></td><td>Media</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_PetSittingPetStore12.png" /></td><td>Pet Sitting/Pet Store</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_RestaurantIceCream13.png" /></td><td>Restaurant/Ice Cream</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_RetailShops14.png" /></td><td>Retail/Shops</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_SocialWork15.png" /></td><td>Social Work</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_TechCellular16.png" /></td><td>Tech/Cellular</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_17.png" /></td><td></td></tr></table>': layer_AthensBlackBusinessDirectory_0,},{collapsed:false}).addTo(map);
         setBounds();
+		
+		var info = L.control({position:'topleft'});
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Enlightened Media Production</h4>';
+};
+
+info.addTo(map);
         </script>
     </body>
 </html>
