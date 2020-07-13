@@ -115,13 +115,13 @@
                 case 'Automotive':
                     return {
                 pane: 'pane_AthensBlackBusinessDirectory_0_1',
-                radius: 4.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1,
+                weight: 2,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(100,157,213,1.0)',
@@ -131,8 +131,8 @@
                 case 'Barber & Beauty':
                     return {
                 pane: 'pane_AthensBlackBusinessDirectory_0_1',
-                radius: 4.0,
-                opacity: 1,
+                radius: 6.0,
+                opacity: 2,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
@@ -147,8 +147,8 @@
                 case 'Bars & Night Life':
                     return {
                 pane: 'pane_AthensBlackBusinessDirectory_0_1',
-                radius: 4.0,
-                opacity: 1,
+                radius: 6.0,
+                opacity: 2,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
@@ -551,7 +551,7 @@
             document.getElementById("menu").appendChild(div_Category);
             sel_Category = document.createElement('select');
             sel_Category.multiple = true;
-            sel_Category.size = 10;
+            sel_Category.size = 5;
             sel_Category.id = "sel_Category";
 			var text_Category = document.createElement('div');
 			text_Category.innerHTML = '<font size="3">This map shows black-owned businesses in Athens, Georgia. Points are color coded by business category. You can filter by business type using the box below or search for a business by name by clicking on the binoculars icon on the map. This map was created through a partnership between <a href="http://enlightenedmediaproductions.com/" target="_new">Enlightened Media Productions</a> and the <a href="http://www.communitymappinglab.org" target="_new">Community Mapping Lab</a>.</font><br><br> ';
