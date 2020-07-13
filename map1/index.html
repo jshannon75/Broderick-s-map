@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/AthensBlackBusinessDirectory_0.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[33.8863417338,-83.50246325],[34.0186402662,-83.27678675]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('https://api.mapbox.com/styles/v1/stephaniewilkes/cjehmemo72p112slfimmcm7em/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3RlcGhhbmlld2lsa2VzIiwiYSI6ImNqZTYzYXUzbTAxYzgyd3BiNGFkaHJlaDgifQ.TxSg22PlVzj1Dd-R7tb93g', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_AthensBlackBusinessDirectory_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td><b>' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name']))+'</b><br>' : '') + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) + ', ' 
+						+ feature.properties['City']: '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Category: </strong>' + (feature.properties['Category'] !== null ? Autolinker.link(String(feature.properties['Category'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Phone: </strong>' + (feature.properties['Phone'] !== null ? Autolinker.link(String(feature.properties['Phone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Website: </strong>' + (feature.properties['Website'] !== null ? Autolinker.link(String(feature.properties['Website'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Hours: </strong>' + (feature.properties['Hours'] !== null ? Autolinker.link(String(feature.properties['Hours'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {minWidth: 800});
+        }
+
+        function style_AthensBlackBusinessDirectory_0_0(feature) {
+            switch(String(feature.properties['Category'])) {
+                case 'Automotive':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(85,220,90,1.0)',
+            }
+                    break;
+                case 'Barber & Beauty':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,119,196,1.0)',
+            }
+                    break;
+                case 'Bars & Night Life':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,103,132,1.0)',
+            }
+                    break;
+                case 'Education':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(78,44,128,1.0)',
+            }
+                    break;
+                case 'Financial Services':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,132,85,1.0)',
+            }
+                    break;
+                case 'Fitness':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(177,99,130,1.0)',
+            }
+                    break;
+                case 'Funeral Homes':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,127,224,1.0)',
+            }
+                    break;
+                case 'Healthcare':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(179,176,181,1.0)',
+            }
+                    break;
+                case 'Home repair and maintenance':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,227,58,1.0)',
+            }
+                    break;
+                case 'Law':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,96,229,1.0)',
+            }
+                    break;
+                case 'Lawn Maintenance':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,233,66,1.0)',
+            }
+                    break;
+                case 'Media':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,124,73,1.0)',
+            }
+                    break;
+                case 'Pet Sitting/Pet Store':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,110,230,1.0)',
+            }
+                    break;
+                case 'Restaurant/Ice Cream':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(55,168,212,1.0)',
+            }
+                    break;
+                case 'Retail/Shops':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(172,235,216,1.0)',
+            }
+                    break;
+                case 'Social Work':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(220,76,71,1.0)',
+            }
+                    break;
+                case 'Tech/Cellular':
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(32,110,61,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_AthensBlackBusinessDirectory_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,171,102,0.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_AthensBlackBusinessDirectory_0');
+        map.getPane('pane_AthensBlackBusinessDirectory_0').style.zIndex = 400;
+        map.getPane('pane_AthensBlackBusinessDirectory_0').style['mix-blend-mode'] = 'normal';
+        var layer_AthensBlackBusinessDirectory_0 = new L.geoJson(json_AthensBlackBusinessDirectory_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_AthensBlackBusinessDirectory_0',
+            onEachFeature: pop_AthensBlackBusinessDirectory_0,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_AthensBlackBusinessDirectory_0_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_AthensBlackBusinessDirectory_0);
+        map.addLayer(layer_AthensBlackBusinessDirectory_0);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Athens Black Business Directory<br /><table><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Automotive0.png" /></td><td>Automotive</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_BarberBeauty1.png" /></td><td>Barber & Beauty</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_BarsNightLife2.png" /></td><td>Bars & Night Life</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Education3.png" /></td><td>Education</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_FinancialServices4.png" /></td><td>Financial Services</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Fitness5.png" /></td><td>Fitness</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_FuneralHomes6.png" /></td><td>Funeral Homes</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Healthcare7.png" /></td><td>Healthcare</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Homerepairandmaintenance8.png" /></td><td>Home repair and maintenance</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Law9.png" /></td><td>Law</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_LawnMaintenance10.png" /></td><td>Lawn Maintenance</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_Media11.png" /></td><td>Media</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_PetSittingPetStore12.png" /></td><td>Pet Sitting/Pet Store</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_RestaurantIceCream13.png" /></td><td>Restaurant/Ice Cream</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_RetailShops14.png" /></td><td>Retail/Shops</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_SocialWork15.png" /></td><td>Social Work</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_TechCellular16.png" /></td><td>Tech/Cellular</td></tr><tr><td style="text-align: center;"><img src="legend/AthensBlackBusinessDirectory_0_17.png" /></td><td></td></tr></table>': layer_AthensBlackBusinessDirectory_0,},{collapsed:false}).addTo(map);
+        setBounds();
+		
+		var info = L.control({position:'bottomleft'});
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = 'Map by <a href="http://enlightenedmediaproductions.com/", target="_new">Enlightened Media Productions</a> and the UGA <a href="https://cmlab.weebly.com/" target="_new">Community Mapping Lab</a>';
+};
+
+info.addTo(map);
+        </script>
+    </body>
+</html>
