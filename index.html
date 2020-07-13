@@ -432,7 +432,8 @@
             propertyName: 'Name'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
-        var mapDiv = document.getElementById('map');
+        
+		var mapDiv = document.getElementById('map');
         var row = document.createElement('div');
         row.className="row";
         row.id="all";
@@ -440,12 +441,13 @@
         var col1 = document.createElement('div');
         col1.className="col9";
         col1.id = "mapWindow";
-        col1.style.height = "99%";
-        col1.style.width = "80%";
+        col1.style.height = "70%";
+        col1.style.width = "100%";
         col1.style.display = "inline-block";
         var col2 = document.createElement('div');
         col2.className="col3";
         col2.id = "menu";
+		col2.style.width="100%";
         col2.style.display = "inline-block";
         mapDiv.parentNode.insertBefore(row, mapDiv);
         document.getElementById("all").appendChild(col2);
@@ -552,7 +554,7 @@
             sel_Category.size = 10;
             sel_Category.id = "sel_Category";
 			var text_Category = document.createElement('div');
-			text_Category.innerHTML = '<font size="3">This map shows black-owned businesses in Athens, Georgia. Points are color coded by business category. You can filter by business type using the box below or search for a business by name by clicking on the binoculars icon on the map.<br><br>This map was created through a partnership between <a href="http://enlightenedmediaproductions.com/" target="_new">Enlightened Media Productions</a> and the <a href="http://www.communitymappinglab.org" target="_new">Community Mapping Lab</a>.</font><br><br> ';
+			text_Category.innerHTML = '<font size="3">This map shows black-owned businesses in Athens, Georgia. Points are color coded by business category. You can filter by business type using the box below or search for a business by name by clicking on the binoculars icon on the map. This map was created through a partnership between <a href="http://enlightenedmediaproductions.com/" target="_new">Enlightened Media Productions</a> and the <a href="http://www.communitymappinglab.org" target="_new">Community Mapping Lab</a>.</font><br><br> ';
 			text_Category.className = 'filterlabel';
 			div_Category.appendChild(text_Category);
 			var lab_Category = document.createElement('div');
